@@ -1,26 +1,8 @@
+package common_methods
+
 import models.Cappuccino
 import models.Menu
 import models.Milk
-
-
-fun main() {
-
-}
-
-fun makeCoffee(orders: List<Menu>) {
-    for (order in orders) {
-        println("Processing order: $order")
-        when (order) {
-            is Cappuccino -> {
-                val groundBeans = grindCoffeeBeans(order.beans())
-                val espressoShot = pullEspressoShot(order, groundBeans)
-                val steamedMilk = milkType(order, order.milk)
-                val cappuccino = makeCappuccino(order, espressoShot, steamedMilk)
-                println("Serve $cappuccino")
-            }
-        }
-    }
-}
 
 fun grindCoffeeBeans(beans: String): String {
     println("Log something here")
