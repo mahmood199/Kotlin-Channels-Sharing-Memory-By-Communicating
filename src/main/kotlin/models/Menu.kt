@@ -1,6 +1,6 @@
 package models
 
 open class Menu(
-    val coffeeBean: CoffeeBean,
-    val milk: Milk
+    open val coffeeBean: CoffeeBean,
+    open val milk: Milk
 )
