@@ -1,16 +1,10 @@
 package runnable_examples
 
 import common_methods.*
-import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import models.Cappuccino
-import models.CoffeeBean
-import models.Menu
-import models.Milk
+import models.*
 import kotlin.system.measureTimeMillis
 
 fun main(): Unit = runBlocking {
@@ -59,4 +53,19 @@ suspend fun makeCoffeeAsync(orders: ReceiveChannel<Menu>) {
             }
         }
     }
+}
+
+
+class EspressoMachine(scope: CoroutineScope): CoroutineScope by scope {
+
+    suspend fun pullEspressoShot(): Espresso {
+        //TODO
+        return Espresso("First espresso")
+    }
+
+    suspend fun steamMilk(milk: Milk): Milk {
+        delay(200)
+        return Milk.Steamed
+    }
+
 }
