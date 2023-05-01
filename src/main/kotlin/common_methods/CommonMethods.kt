@@ -3,8 +3,10 @@ package common_methods
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
-import models.Cappuccino
+import models.CoffeeBean
+import models.Espresso
 import models.Menu
+import models.Cappuccino
 import models.Milk
 
 fun grindCoffeeBeans(beans: String): String {
@@ -50,3 +52,18 @@ suspend fun makeCappuccinoAsync(order: Cappuccino, espressoShot: String, steamed
     delay(100)
     return Cappuccino(order.coffeeBean, order.milk)
 }
+
+suspend fun grindCoffeeBeansAsync2(beans: String): CoffeeBean.GroundBeans {
+    println("${currentCoroutineContext()[CoroutineName]} Grinding beans")
+    delay(100)
+    return CoffeeBean.GroundBeans(beans)
+}
+
+suspend fun makeCappuccinoAsync2(order: Cappuccino, espressoShot: Espresso, steamedMilk: Milk.SteamedMilk): Cappuccino {
+    println("${currentCoroutineContext()[CoroutineName]} Combining all ingredients: $espressoShot $steamedMilk")
+    delay(100)
+    return Cappuccino(order.coffeeBean, order.milk)
+}
+
+
+
