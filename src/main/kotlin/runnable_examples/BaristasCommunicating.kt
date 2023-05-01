@@ -2,19 +2,18 @@ package runnable_examples
 
 import common_methods.*
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.channels.ReceiveChannel
+import kotlinx.coroutines.channels.*
 import models.*
 import kotlin.system.measureTimeMillis
 
 fun main(): Unit = runBlocking {
     val orders = buildList {
-        add(Cappuccino(CoffeeBean.Regular, Milk.Whole))
-        add(Cappuccino(CoffeeBean.Premium, Milk.Breve))
-        add(Cappuccino(CoffeeBean.Regular, Milk.NonFat))
-        add(Cappuccino(CoffeeBean.Decaf, Milk.Whole))
-        add(Cappuccino(CoffeeBean.Regular, Milk.NonFat))
-        add(Cappuccino(CoffeeBean.Decaf, Milk.NonFat))
+        add(Cappuccino(CoffeeBean.Regular(), Milk.Whole()))
+        add(Cappuccino(CoffeeBean.Premium(), Milk.Breve()))
+        add(Cappuccino(CoffeeBean.Regular(), Milk.NonFat()))
+        add(Cappuccino(CoffeeBean.Decaf(), Milk.Whole()))
+        add(Cappuccino(CoffeeBean.Regular(), Milk.NonFat()))
+        add(Cappuccino(CoffeeBean.Decaf(), Milk.NonFat()))
     }
 
     val ordersChannel = Channel<Menu>()
@@ -56,16 +55,4 @@ suspend fun makeCoffeeAsync(orders: ReceiveChannel<Menu>) {
 }
 
 
-class EspressoMachine(scope: CoroutineScope): CoroutineScope by scope {
 
-    suspend fun pullEspressoShot(): Espresso {
-        //TODO
-        return Espresso("First espresso")
-    }
-
-    suspend fun steamMilk(milk: Milk): Milk {
-        delay(200)
-        return Milk.Steamed
-    }
-
-}

@@ -12,7 +12,7 @@ import models.Milk
 
 fun main() {
     val list = buildList<Menu> {
-        add(Cappuccino(CoffeeBean.Regular, Milk.Whole))
+        add(Cappuccino(CoffeeBean.Regular(), Milk.Whole()))
     }
     makeCoffee(list)
 }

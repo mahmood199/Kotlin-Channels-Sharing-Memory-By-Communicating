@@ -11,12 +11,12 @@ import models.Milk
 
 fun main(): Unit = runBlocking {
     val orders = buildList {
-        add(Cappuccino(CoffeeBean.Regular, Milk.Whole))
-        add(Cappuccino(CoffeeBean.Premium, Milk.Breve))
-        add(Cappuccino(CoffeeBean.Regular, Milk.NonFat))
-        add(Cappuccino(CoffeeBean.Decaf, Milk.Whole))
-        add(Cappuccino(CoffeeBean.Regular, Milk.NonFat))
-        add(Cappuccino(CoffeeBean.Decaf, Milk.NonFat))
+        add(Cappuccino(CoffeeBean.Regular(), Milk.Whole()))
+        add(Cappuccino(CoffeeBean.Premium(), Milk.Breve()))
+        add(Cappuccino(CoffeeBean.Regular(), Milk.NonFat()))
+        add(Cappuccino(CoffeeBean.Decaf(), Milk.Whole()))
+        add(Cappuccino(CoffeeBean.Regular(), Milk.NonFat()))
+        add(Cappuccino(CoffeeBean.Decaf(), Milk.NonFat()))
     }
 
     launch(CoroutineName("Barista-1")) {
